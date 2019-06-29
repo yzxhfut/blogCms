@@ -1,6 +1,6 @@
 <template>
-  <q-page class="row">
-    <div class="col-1 column bg-blue text-h6 text-grey-9">
+  <q-page class="row" :style-fn="height">
+    <div class="slide-width column bg-blue text-h6 text-grey-9">
       <q-item clickable v-ripple class="row flex-center title-padding" @click="article" :class="activeItem[0]">
         文章管理
       </q-item>
@@ -14,7 +14,7 @@
         友链管理
       </q-item>
     </div>
-    <div class="col-11">
+    <div style="width: 90%;">
       <router-view />
     </div>
   </q-page>
@@ -23,6 +23,9 @@
 <style scoped>
   .title-padding{
     padding-top: 1rem;
+  }
+  .slide-width{
+    width: 10%;
   }
 </style>
 <style>
@@ -45,6 +48,9 @@ export default {
     }
   },
   methods: {
+    height (offset) {
+      return { height: offset ? `calc(100vh - ${offset}px)` : '100vh' }
+    },
     article () {
       this.active = 0
       // this.$router.push('/login')
