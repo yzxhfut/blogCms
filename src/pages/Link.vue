@@ -1,15 +1,15 @@
 <template>
   <div class="column" style="padding: 0 2rem;height: 100%;">
     <div class="col-1 row items-center text-h5">
-      <div style="padding-right: 2rem;">文章列表</div>
+      <div style="padding-right: 2rem;">友链列表</div>
       <q-icon color="primary" name="mdi-plus-circle-outline"></q-icon>
     </div>
     <div class="col-9 column" style="flex-wrap: nowrap;">
       <div v-for="(content, index) in currentContents" :key="index" class="row items-center item" style="padding: 1.5rem 0;">
         <div style="width: 5%;">{{index + 1}}</div>
         <div class="col-3">我们今生有缘在路上{{content}}</div>
-        <div class="col-1" style="margin-right: 3rem;">2019-6-21</div>
-        <div class="col-1 text-blue" @click="$router.replace('/updatearticle')">修改</div>
+        <div class="col-3">www.baidu.com</div>
+        <div class="col-1 text-blue" @click="$router.replace('/')">修改</div>
         <div class="col-1 text-red">删除</div>
       </div>
       <div class="row">
@@ -38,12 +38,12 @@
 
 <script>
 export default {
-  name: 'Article',
+  name: 'Link',
   data () {
     return {
       currentPage: 1,
       pageSize: 10,
-      contents: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+      contents: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22],
       currentContents: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     }
   },

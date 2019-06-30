@@ -8,7 +8,11 @@ const routes = [
         path: '',
         component: () => import('pages/Index.vue'),
         children: [
-          { path: '', component: () => import('pages/Article.vue') }
+          { path: '', component: () => import('pages/Article.vue') },
+          { path: 'comment', component: () => import('pages/Comment.vue') },
+          { path: 'about', component: () => import('pages/About.vue') },
+          { path: 'link', component: () => import('pages/Link.vue') },
+          { path: 'updatearticle', component: () => import('pages/UpdateArticle.vue') }
         ]
       }
     ]
