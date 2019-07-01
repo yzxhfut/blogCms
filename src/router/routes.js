@@ -12,7 +12,8 @@ const routes = [
           { path: 'comment', component: () => import('pages/Comment.vue') },
           { path: 'about', component: () => import('pages/About.vue') },
           { path: 'link', component: () => import('pages/Link.vue') },
-          { path: 'updatearticle', component: () => import('pages/UpdateArticle.vue') }
+          { path: 'updatearticle/:id', component: () => import('pages/UpdateArticle.vue') },
+          { path: 'updatelink', component: () => import('pages/UpdateLink.vue') }
         ]
       }
     ]

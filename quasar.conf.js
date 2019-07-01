@@ -49,7 +49,9 @@ module.exports = function (ctx) {
         'QSeparator',
         'QPagination',
         'QEditor',
-        'QExpansionItem'
+        'QExpansionItem',
+        'QRadio',
+        'QCheckbox'
       ],
 
       directives: [
@@ -58,8 +60,13 @@ module.exports = function (ctx) {
 
       // Quasar plugins
       plugins: [
-        'Notify'
-      ]
+        'Notify',
+        'Dialog',
+        'Loading'
+      ],
+      config: {
+        loading: { /* Loading defaults */ }
+      }
     },
 
     supportIE: false,

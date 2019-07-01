@@ -2,15 +2,14 @@
   <div class="column" style="padding: 0 2rem;height: 100%;">
     <div class="col-1 row items-center text-h5">
       <div style="padding-right: 2rem;">文章列表</div>
-      <q-icon color="primary" name="mdi-plus-circle-outline"></q-icon>
     </div>
     <div class="col-9 column" style="flex-wrap: nowrap;">
       <div v-for="(content, index) in currentContents" :key="index" class="row items-center item" style="padding: 1.5rem 0;">
         <div style="width: 5%;">{{index + 1}}</div>
-        <div class="col-3">我们今生有缘在路上{{content}}</div>
-        <div class="col-1" style="margin-right: 3rem;">2019-6-21</div>
-        <div class="col-1 text-blue" @click="$router.replace('/updatearticle')">修改</div>
-        <div class="col-1 text-red">删除</div>
+        <div class="col-5">{{content.title}}</div>
+        <div class="col-1" style="margin-right: 3rem;">{{content.createdAt.split(' ')[0]}}</div>
+        <div class="col-1 text-blue op" @click="$router.push('/updatearticle/' + content.objectId)">修改</div>
+        <div class="col-1 text-red op" @click="deleteArticle(content.objectId)">删除</div>
       </div>
       <div class="row">
         <q-separator style="background: darkgrey;"></q-separator>
@@ -31,7 +30,11 @@
   </div>
 </template>
 
-<style lang='stylus' scoped>
+<style scoped>
+  .op:hover{
+    cursor: pointer;
+    text-decoration: underline;
+  }
 </style>
 <style>
 </style>
@@ -43,10 +46,11 @@ export default {
     return {
       currentPage: 1,
       pageSize: 10,
-      contents: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
-      currentContents: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+      contents: [],
+      currentContents: []
     }
   },
+  inject: ['reload'],
   computed: {
     type () {
       return this.$route.params.type || '文章'
@@ -56,6 +60,16 @@ export default {
     }
   },
   methods: {
+    deleteArticle (id) {
+      this.$q.dialog({
+        title: '提示',
+        message: '确定删除当前文章？',
+        ok: '确定',
+        cancel: '取消'
+      }).onOk(() => {
+        deleteArticleById(this, id)
+      })
+    },
     pageChange (page) {
       this.currentContents = []
       for (let i = (this.currentPage - 1) * this.pageSize; i < this.currentPage * this.pageSize; i++) {
@@ -64,6 +78,43 @@ export default {
         }
       }
     }
+  },
+  created () {
+    var that = this
+    getArticle(this).then(function (res) {
+      that.contents = res
+      for (let i = (that.currentPage - 1) * that.pageSize; i < that.currentPage * that.pageSize; i++) {
+        if (i < that.contents.length) {
+          that.currentContents.push(that.contents[i])
+        }
+      }
+    })
   }
+}
+async function getArticle (context) {
+  const query = context.Bmob.Query('article')
+  query.order('-createdAt')
+  var res = await query.find()
+  return res
+}
+function deleteArticleById (context, id) {
+  context.$q.loading.show()
+  const query = context.Bmob.Query('article')
+  query.destroy(id).then(res => {
+    context.$q.loading.hide()
+    context.$q.notify({
+      message: '删除成功',
+      color: 'primary',
+      timeout: 1000
+    })
+    context.reload()
+  }).catch(err => {
+    context.$q.loading.hide()
+    context.$q.dialog({
+      title: '提示',
+      message: err.toString(),
+      ok: '确定'
+    })
+  })
 }
 </script>
