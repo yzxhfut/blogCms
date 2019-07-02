@@ -51,11 +51,13 @@ module.exports = function (ctx) {
         'QEditor',
         'QExpansionItem',
         'QRadio',
-        'QCheckbox'
+        'QCheckbox',
+        'QScrollArea'
       ],
 
       directives: [
-        'Ripple'
+        'Ripple',
+        'ClosePopup'
       ],
 
       // Quasar plugins

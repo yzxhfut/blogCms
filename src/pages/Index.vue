@@ -1,6 +1,6 @@
 <template>
   <q-page class="row" :style-fn="height">
-    <q-list bordered class="col-2 rounded-borders">
+    <q-list bordered class="col-2 rounded-borders" style="padding: 1rem 0;">
       <q-expansion-item group="somegroup" :content-inset-level="1" expand-separator style="font-size: 1.1rem;">
         <template v-slot:header>
           <q-item-section avatar>
@@ -106,7 +106,7 @@ export default {
     },
     updatelink () {
       this.$store.commit('active/updateActive', 5)
-      this.$router.replace('/updatelink')
+      this.$router.replace('/updatelink/new')
     }
   }
 }

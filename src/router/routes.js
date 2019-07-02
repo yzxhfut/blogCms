@@ -13,7 +13,7 @@ const routes = [
           { path: 'about', component: () => import('pages/About.vue') },
           { path: 'link', component: () => import('pages/Link.vue') },
           { path: 'updatearticle/:id', component: () => import('pages/UpdateArticle.vue') },
-          { path: 'updatelink', component: () => import('pages/UpdateLink.vue') }
+          { path: 'updatelink/:id', component: () => import('pages/UpdateLink.vue') }
         ]
       }
     ]

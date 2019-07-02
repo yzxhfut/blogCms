@@ -88,10 +88,12 @@ export default {
           that.currentContents.push(that.contents[i])
         }
       }
+      that.$q.loading.hide()
     })
   }
 }
 async function getArticle (context) {
+  context.$q.loading.show()
   const query = context.Bmob.Query('article')
   query.order('-createdAt')
   var res = await query.find()
