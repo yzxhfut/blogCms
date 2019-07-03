@@ -20,7 +20,7 @@
             </q-input>
           </div>
           <div class="row flex-center" style="padding-top: 1rem;">
-            <q-btn rounded outline color="white" label="登 录" class="col-10" style="height: 3rem;font-size: 1rem;"></q-btn>
+            <q-btn rounded outline color="white" label="登 录" class="col-10" style="height: 3rem;font-size: 1rem;" @click="login"></q-btn>
           </div>
         </div>
         <div class="col-4"></div>
@@ -42,6 +42,20 @@ export default {
     return {
       name: null,
       pwd: null
+    }
+  },
+  methods: {
+    login () {
+      this.Bmob.User.login(this.name, this.pwd).then(res => {
+        this.$router.replace('/')
+      }).catch(err => {
+        console.log(err)
+        this.$q.notify({
+          message: '用户名或密码错误',
+          color: 'primary',
+          timeout: 1000
+        })
+      })
     }
   }
 }

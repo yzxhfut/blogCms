@@ -6,15 +6,15 @@
     <div class="col-9 row">
       <div class="col-4 column" style="padding: 0 0.5rem;">
         <div class="col-1 text-center text-h6">关于我</div>
-        <q-editor v-model="aboutMe" min-height="5rem" :toolbar="toolbar" style="font-size: 1.2rem" class="col-11"/>
+        <q-editor v-model="aboutMe" min-height="5rem" :toolbar="toolbar" class="col-11"/>
       </div>
       <div class="col-4 column">
         <div class="col-1 text-center text-h6">技术栈</div>
-        <q-editor v-model="techStack" min-height="5rem" :toolbar="toolbar" style="font-size: 1.2rem" class="col-11"/>
+        <q-editor v-model="techStack" min-height="5rem" :toolbar="toolbar" class="col-11"/>
       </div>
       <div class="col-4 column" style="padding: 0 0.5rem;">
         <div class="col-1 text-center text-h6">联系我</div>
-        <q-editor v-model="contact" min-height="5rem" :toolbar="toolbar" style="font-size: 1.2rem" class="col-11"/>
+        <q-editor v-model="contact" min-height="5rem" :toolbar="toolbar" class="col-11"/>
       </div>
     </div>
     <div class="col-1 row flex-center">

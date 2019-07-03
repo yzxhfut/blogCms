@@ -133,7 +133,7 @@ function addLink (context) {
       timeout: 1000
     })
     context.$router.replace('/link')
-    context.$store.commit('active/updateActive', 4)
+    context.$store.commit('active/updateActive', 5)
   }).catch(err => {
     context.$q.loading.hide()
     context.$q.dialog({
@@ -160,7 +160,7 @@ function updateLink (context) {
       timeout: 3000
     })
     context.$router.replace('/link')
-    context.$store.commit('active/updateActive', 4)
+    context.$store.commit('active/updateActive', 5)
   }).catch(err => {
     context.$q.loading.hide()
     context.$q.dialog({
