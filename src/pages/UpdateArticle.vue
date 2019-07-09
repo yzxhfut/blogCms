@@ -4,7 +4,7 @@
       <q-icon name="mdi-chevron-left" color="primary" style="font-size: 2rem;padding-right: 1rem;" @click="$router.back(-1)"></q-icon>
       <div style="padding-right: 2rem;">{{title}}</div>
     </div>
-    <div class="row items-center" style="font-size: 1.25rem;padding-bottom: 1rem;">
+    <div class="row col-1 items-center" style="font-size: 1.25rem;">
       <div>标题 : </div>
       <div class="col-4" style="padding: 0.5rem;">
        <q-input outlined dense color="primary" input-style="font-size: 1.2rem;" v-model="input" placeholder="文章标题"></q-input>
@@ -16,8 +16,8 @@
        <q-checkbox v-for="(tag, index) in tags" :key="index" v-model="currentTag" :label="tag" :val="tag"/>
       </div>
     </div>
-    <mavon-editor class="col-8" v-model="value" @change="getHtml" fontSize="1.1rem"/>
-    <div class="row flex-center" style="padding-top: 1.5rem;">
+    <mavon-editor class="col-8" v-model="value" @change="getHtml" fontSize="1.1rem" style="width: 100%;" />
+    <div class="row col-1 flex-center" style="padding-top: 1.5rem;">
       <q-btn rounded class="col-2" color="primary" label="提 交" @click="submit" style="height: 3rem;"></q-btn>
     </div>
   </div>
@@ -62,7 +62,7 @@ export default {
         return '修改文章 / ' + this.article.title
       }
     }
-  }, 
+  },
   methods: {
     getHtml (value, render) {
       this.content = render

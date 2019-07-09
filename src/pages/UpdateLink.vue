@@ -3,7 +3,7 @@
     <div class="col-1 row items-center text-h5">
       <div style="padding-right: 2rem;">{{title}}</div>
     </div>
-    
+
     <div class="col-11 row">
       <div class="col-5 column" style="flex-wrap: nowrap;">
         <div class="row items-center" style="padding-bottom: 1.5rem;">
@@ -13,28 +13,28 @@
             <q-radio v-model="linkType" val="web" label="社区"/>
           </div>
         </div>
-        
+
         <div class="row items-center" style="padding-bottom: 1.5rem;">
           <div class="col-2" style="font-size: 1.25rem;">网站名称 : </div>
           <div class="col-8" style="padding-left: 0.5rem;">
             <q-input outlined dense v-model="name" color="primary" placeholder="网站名称"></q-input>
           </div>
         </div>
-        
+
         <div class="row items-center" style="padding-bottom: 1.5rem;">
           <div class="col-2" style="font-size: 1.25rem;">网站域名 : </div>
           <div class="col-8" style="padding-left: 0.5rem;">
             <q-input outlined dense v-model="domain" color="primary" placeholder="网站域名"></q-input>
           </div>
         </div>
-        
+
         <div class="row items-center" style="padding-bottom: 1.5rem;">
           <div class="col-2 row items-center" style="font-size: 1.25rem;">图标地址 : </div>
           <div class="col-8 " style="padding-left: 0.5rem;">
             <q-input outlined dense v-model="imgUrl" color="primary" placeholder="图标地址"></q-input>
           </div>
         </div>
-        
+
         <div class="row">
           <div class="col-5">
             <img style="height: 5rem;width: 5rem;" :src="imgUrl" />
